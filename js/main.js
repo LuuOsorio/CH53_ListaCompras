@@ -1,15 +1,16 @@
 //Validando los campos 
-let txtName = document.getElementById("Name"); //campo de nombre
-let txtNumber = document.getElementById("Number"); //campo de cantidad
-let btnAgregar = document.getElementById("btnAgregar");
-let alertValidacionesTexto = document.getElementById("alertValidacionesTexto");
-let alertValidaciones = document.getElementById("alertValidaciones");
-let tablaListaCompras = document.getElementById("tablaListaCompras");
+const txtName = document.getElementById("Name"); //campo de nombre
+const txtNumber = document.getElementById("Number"); //campo de cantidad
+const btnAgregar = document.getElementById("btnAgregar");
+const alertValidacionesTexto = document.getElementById("alertValidacionesTexto");
+const alertValidaciones = document.getElementById("alertValidaciones");
+const tablaListaCompras = document.getElementById("tablaListaCompras");
 const cuerpoTabla = tablaListaCompras.getElementsByTagName("tbody").item(0); //regresa varios elementos de un elemento, pero con .item(0), que es el primer elemento que se requiere y así entramos al body del elemento.
 
-let contadorProductos = document.getElementById("contadorProductos");
-let productosTotal = document.getElementById("productosTotal");
-let precioTotal = document.getElementById("precioTotal");
+const contadorProductos = document.getElementById("contadorProductos");
+const productosTotal = document.getElementById("productosTotal");
+const precioTotal = document.getElementById("precioTotal");
+const btnLimpiarTodo = document.getElementById("btnClear");
 
 //Numeración de la primera columna de la tabla
 let cont = 0; // primer variable para tabla
@@ -164,3 +165,46 @@ window.addEventListener("load", function (event) {
 
 
 }); //window.addEvenListener load
+
+
+//Agregar la funcionalidad del botón limpiar todo
+//Resumen
+//Tabla
+//Campos
+//Alerta
+//localstorage
+
+//no usar local storage.clear
+btnLimpiarTodo.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    // Limpiar variables
+    cont = 0;
+    costoTotal = 0;
+    totalEnProductos = 0;
+    datos = [];
+
+    // Limpiar resumen
+    contadorProductos.innerText = "";
+    productosTotal.innerText = "";
+    precioTotal.innerText = "$";
+    
+    // Limpiar tabla
+    cuerpoTabla.innerHTML = "";
+
+    // Limpiar campos del formulario
+    txtName.value = "";
+    txtName.style.border = "";
+    txtNumber.value = "";
+    txtNumber.style.border = "";
+
+    // Limpiar alertas
+    alertValidacionesTexto.innerHTML = "";
+    alertValidaciones.style.display = "none";
+
+    // Limpiar localStorage
+    localStorage.removeItem("datos");
+    localStorage.removeItem("resumen");
+});//btnLimpiarTodo
+
+
